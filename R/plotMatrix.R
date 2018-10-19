@@ -1,4 +1,4 @@
-# Heatmap zeichnen
+# Heatmap zeichnen (fuer ACOLS)
 
 
 #' @export
