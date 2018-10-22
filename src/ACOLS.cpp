@@ -438,6 +438,7 @@ struct ACOLSSolver : public Solver{
         Rcpp::Rcout << result <<  " " << std::pow(result, 0.1) << std::endl;
         waitForInput("...", DEBUG_ENABLED);
       }
+      // 0.1, weil sonst zu starker Einfluss
       result = std::pow(result, 0.1);
     }
 
@@ -708,7 +709,7 @@ struct ACOLSSolver : public Solver{
     }
 
     // int oldQuality = bestSolutionQuality_;
-    int resultingQuality = evaluateSolution(jobData_, perm1, perm2, maxBufferSize_, bufferType_);
+    //int resultingQuality = evaluateSolution(jobData_, perm1, perm2, maxBufferSize_, bufferType_);
 
     // if (resultingQuality < oldQuality){
     //   improvementFound = true;

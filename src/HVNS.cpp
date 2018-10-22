@@ -74,7 +74,7 @@ struct HVNSSolver : public Solver{
 
         // Rcpp::Rcout << "Nachbarschaftssuche mit " << currentNeighborhood << "-ten Nachbarschaft" << std::endl;
         neighborhoodSearch(currentSolution_, currentNeighborhood);
-        int tempQuality = evaluateSolution(jobData_, currentSolution_, currentSolution_, maxBufferSize_, bufferType_);
+        // int tempQuality = evaluateSolution(jobData_, currentSolution_, currentSolution_, maxBufferSize_, bufferType_);
         // if (tempQuality < bestSolutionQuality_){
         //   bestSolution_.assign(currentSolution_.begin(), currentSolution_.end());
         //   bestSolutionQuality_ = tempQuality;
