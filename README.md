@@ -12,4 +12,4 @@ devtools::install_github("L-HT/TwoMachineFlowShopBuffers")
 ```
 to install this package.
 
-An example on how to call some basic functions can be found in `example.R` in the subdirectory `test`.
+An example on how to call some basic functions can be found in `example.R` located in the subdirectory `tests`.
