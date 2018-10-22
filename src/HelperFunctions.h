@@ -9,7 +9,7 @@
 #include <chrono>
 #include <random>
 
-#define MYPACKAGE "package:TwoMachineFlowShopEx"
+#define MYPACKAGE "package:TwoMachineFlowShopBuffers"
 #define GETQUALITY "getMakespanOfSimulation"
 #define SOLVE_LINEAR_EQUATION_SYSTEM "rQRSolve"
 #define SOLVE_LINEAR_EQUATION_SYSTEM_CHOL "rCholeskySolve"
