@@ -11,6 +11,8 @@
  * Sppbo initialisiert alles und läuft durch.
  * Dabei loggt er die Ergebnisse.
  */
+
+
 struct DABCSolver : public Solver{
   // const Rcpp::DataFrame jobData_;
   // const std::string logFileName_;
@@ -46,6 +48,32 @@ struct DABCSolver : public Solver{
 
     numberOfInserts_ = numberOfJobs_;
     localSearchAttempts_ = numberOfJobs_ * numberOfJobs_;
+    population_.reserve(populationSize_);
+    myCopy_.reserve(numberOfJobs_);
+  }
+
+  // Konstruktor mit Parametern
+  DABCSolver(Rcpp::DataFrame jobData, std::string logFileName, unsigned int runNumber, Rcpp::Environment rEnvironment,
+             int maxBufferSize, std::string bufferType,
+             std::string targetCriterion, std::string fileSuffix,
+             int populationSize,
+             int perturbationStrength,
+             int destructionSize1,
+             int destructionSize2,
+             int numberOfInserts,
+             int localSearchAttempts)
+
+    : Solver(jobData, logFileName, runNumber, rEnvironment, maxBufferSize, bufferType,
+      targetCriterion,
+      "dabc", fileSuffix),
+      populationSize_(populationSize),
+      perturbationStrength_(perturbationStrength),
+      destructionSize1_(destructionSize1),
+      destructionSize2_(destructionSize2),
+      numberOfInserts_(numberOfInserts),
+      localSearchAttempts_(localSearchAttempts)
+      {
+
     population_.reserve(populationSize_);
     myCopy_.reserve(numberOfJobs_);
   }
@@ -453,15 +481,48 @@ struct DABCSolver : public Solver{
   }
 };
 
+
+
 //' @export
 // [[Rcpp::export]]
 void startDABC(Rcpp::DataFrame jobData, std::string logFileName, int maxBufferSize, std::string bufferType = "intermediateBuffer",
                std::string targetCriterion = "makespan",
                unsigned int runNumber = 1, std::string fileSuffix = ""){
+
   // Rcpp::Rcout << "Start DABC" << std::endl;
   Rcpp::Environment myEnvironment(MYPACKAGE);
   DABCSolver dabcs(jobData, logFileName, runNumber, myEnvironment, maxBufferSize, bufferType,
                    targetCriterion, fileSuffix);
+
+  ///////Bodeih/////////
+  // Rcpp::Rcout << "run aufgerufen" << std::endl;
+  dabcs.run();
+  // Rcpp::Rcout << "Feddich";
+}
+
+//' @export
+// [[Rcpp::export]]
+void startDABCWithParameters(Rcpp::DataFrame jobData, std::string logFileName, int maxBufferSize, std::string bufferType = "intermediateBuffer",
+               std::string targetCriterion = "makespan",
+               unsigned int runNumber = 1, std::string fileSuffix = "",
+               int populationSize = 50,
+               int perturbationStrength = 3,
+               int destructionSize1 = 5,
+               int destructionSize2 = 6,
+               int numberOfInserts = 10,
+               int localSearchAttempts = 10){
+
+  // Rcpp::Rcout << "Start DABC" << std::endl;
+  Rcpp::Environment myEnvironment(MYPACKAGE);
+  DABCSolver dabcs(jobData, logFileName, runNumber, myEnvironment, maxBufferSize, bufferType,
+                   targetCriterion, fileSuffix,
+                   populationSize,
+                   perturbationStrength,
+                   destructionSize1,
+                   destructionSize2,
+                   numberOfInserts,
+                   localSearchAttempts
+  );
 
   ///////Bodeih/////////
   // Rcpp::Rcout << "run aufgerufen" << std::endl;

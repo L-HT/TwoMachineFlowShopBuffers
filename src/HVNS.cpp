@@ -64,6 +64,34 @@ struct HVNSSolver : public Solver{
     randomNumber = std::uniform_real_distribution<double>(0.0, 1.0); //Intervall [0,1)
   }
 
+  HVNSSolver(Rcpp::DataFrame jobData, std::string logFileName, unsigned int runNumber,
+             Rcpp::Environment rEnvironment,
+             int maxBufferSize, std::string bufferType,
+             std::string targetCriterion, std::string fileSuffix,
+             int nIter, double endTemperatureFactor)
+    : Solver(jobData, logFileName, runNumber, rEnvironment, maxBufferSize, bufferType,
+      targetCriterion,
+      "hvns", fileSuffix), initTemperature_(0.0), endTemperature_(0.0), nIter_(nIter){
+
+    Rcpp::IntegerVector m1Times = jobData["m1Time"];
+    Rcpp::IntegerVector m2Times = jobData["m2Time"];
+    initTemperature_ = std::accumulate(m1Times.begin(), m1Times.end(), 0.0);
+    initTemperature_ = std::accumulate(m2Times.begin(), m2Times.end(), initTemperature_);
+    initTemperature_ /= 5.0*2.0* (double) numberOfJobs_;
+
+    endTemperature_ = initTemperature_ * endTemperatureFactor;
+    Rcpp::Rcout << "initT: " << initTemperature_ << std::endl;
+    Rcpp::Rcout << "endT: " << endTemperature_ << std::endl;
+
+    beta_ = (initTemperature_ - endTemperature_) / (((double) nIter_ - 1.0)*initTemperature_*endTemperature_);
+    currentTemperature_ = initTemperature_;
+    myCopy_.reserve(numberOfJobs_);
+
+    //RNG
+    gen = std::mt19937(rd());
+    randomNumber = std::uniform_real_distribution<double>(0.0, 1.0); //Intervall [0,1)
+  }
+
   void run(){
     setInitialSolution();
     int currentNeighborhood;
@@ -74,7 +102,7 @@ struct HVNSSolver : public Solver{
 
         // Rcpp::Rcout << "Nachbarschaftssuche mit " << currentNeighborhood << "-ten Nachbarschaft" << std::endl;
         neighborhoodSearch(currentSolution_, currentNeighborhood);
-        // int tempQuality = evaluateSolution(jobData_, currentSolution_, currentSolution_, maxBufferSize_, bufferType_);
+        int tempQuality = evaluateSolution(jobData_, currentSolution_, currentSolution_, maxBufferSize_, bufferType_);
         // if (tempQuality < bestSolutionQuality_){
         //   bestSolution_.assign(currentSolution_.begin(), currentSolution_.end());
         //   bestSolutionQuality_ = tempQuality;
@@ -484,6 +512,23 @@ void startHVNS(Rcpp::DataFrame jobData, std::string logFileName, int maxBufferSi
   // Rcpp::Rcout << "Start HVNS" << std::endl;
   Rcpp::Environment myEnvironment(MYPACKAGE);
   HVNSSolver hvnss(jobData, logFileName, runNumber, myEnvironment, maxBufferSize, bufferType, targetCriterion, fileSuffix);
+
+  ///////Bodeih/////////
+
+  // Rcpp::Rcout << "run aufgerufen" << std::endl;
+  hvnss.run();
+  // Rcpp::Rcout << "Feddich";
+}
+
+//' @export
+// [[Rcpp::export]]
+void startHVNSWithParams(Rcpp::DataFrame jobData, std::string logFileName, int maxBufferSize, std::string bufferType = "intermediateBuffer",
+               std::string targetCriterion = "makespan",
+               unsigned int runNumber = 1, std::string fileSuffix = "",
+               int nIter = 180000, double endTemperatureFactor = 0.1){
+  // Rcpp::Rcout << "Start HVNS" << std::endl;
+  Rcpp::Environment myEnvironment(MYPACKAGE);
+  HVNSSolver hvnss(jobData, logFileName, runNumber, myEnvironment, maxBufferSize, bufferType, targetCriterion, fileSuffix, nIter, endTemperatureFactor);
 
   ///////Bodeih/////////
 

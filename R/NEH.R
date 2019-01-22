@@ -88,7 +88,7 @@ getNEHTime <- function(jobData, bufferType, maxBufferSize, subType){
 #' @export
 getNEHEvaluations <- function(jobData){
   numberOfJobs <- nrow(jobData)
-  result <- numberOfJobs - 1 + numberOfJobs*(numberOfJobs-1) / 2;
+  result <- numberOfJobs - 1 + numberOfJobs*(numberOfJobs-1) / 2
   return(result)
 }
 
