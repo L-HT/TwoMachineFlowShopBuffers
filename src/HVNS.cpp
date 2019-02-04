@@ -532,8 +532,7 @@ void startHVNSWithParams(Rcpp::DataFrame jobData, std::string logFileName, int m
 
   ///////Bodeih/////////
 
-  // Rcpp::Rcout << "run aufgerufen" << std::endl;
   hvnss.run();
-  // Rcpp::Rcout << "Feddich";
+
 }
 

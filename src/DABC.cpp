@@ -6,11 +6,6 @@
 
 #include "HelperFunctions.h"
 #include "Solver.h"
-/*
- * Der diskrete ABC speziell für 2mFSBuf.
- * Sppbo initialisiert alles und läuft durch.
- * Dabei loggt er die Ergebnisse.
- */
 
 
 struct DABCSolver : public Solver{
@@ -145,7 +140,8 @@ struct DABCSolver : public Solver{
       //Rcpp::Rcout << "no: " << numberOfEvaluation_ << std::endl;
       if (terminationCriterionSatisfied()){
         writeBestSolution();
-        Rcpp::stop("Zeit abgelaufen");
+        Rcpp::Rcerr << "Zeit abgelaufen während Initialisierung der " << i+1 << "-ten Biene" << std::endl;
+        // Rcpp::stop("Zeit abgelaufen während Initialisierung der Bienen");
       }
     }
 
@@ -489,15 +485,11 @@ void startDABC(Rcpp::DataFrame jobData, std::string logFileName, int maxBufferSi
                std::string targetCriterion = "makespan",
                unsigned int runNumber = 1, std::string fileSuffix = ""){
 
-  // Rcpp::Rcout << "Start DABC" << std::endl;
   Rcpp::Environment myEnvironment(MYPACKAGE);
   DABCSolver dabcs(jobData, logFileName, runNumber, myEnvironment, maxBufferSize, bufferType,
                    targetCriterion, fileSuffix);
-
-  ///////Bodeih/////////
-  // Rcpp::Rcout << "run aufgerufen" << std::endl;
   dabcs.run();
-  // Rcpp::Rcout << "Feddich";
+
 }
 
 //' @export
@@ -512,7 +504,6 @@ void startDABCWithParameters(Rcpp::DataFrame jobData, std::string logFileName, i
                int numberOfInserts = 10,
                int localSearchAttempts = 10){
 
-  // Rcpp::Rcout << "Start DABC" << std::endl;
   Rcpp::Environment myEnvironment(MYPACKAGE);
   DABCSolver dabcs(jobData, logFileName, runNumber, myEnvironment, maxBufferSize, bufferType,
                    targetCriterion, fileSuffix,
@@ -523,10 +514,6 @@ void startDABCWithParameters(Rcpp::DataFrame jobData, std::string logFileName, i
                    numberOfInserts,
                    localSearchAttempts
   );
-
-  ///////Bodeih/////////
-  // Rcpp::Rcout << "run aufgerufen" << std::endl;
   dabcs.run();
-  // Rcpp::Rcout << "Feddich";
 }
 
