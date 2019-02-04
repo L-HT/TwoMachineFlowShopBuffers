@@ -12,23 +12,23 @@ startDABC <- function(jobData, logFileName, maxBufferSize, bufferType = "interme
 }
 
 #' @export
+startDABCWithParameters <- function(jobData, logFileName, maxBufferSize, bufferType = "intermediateBuffer", targetCriterion = "makespan", runNumber = 1L, fileSuffix = "", populationSize = 50L, perturbationStrength = 3L, destructionSize1 = 5L, destructionSize2 = 6L, numberOfInserts = 10L, localSearchAttempts = 10L) {
+    invisible(.Call('_TwoMachineFlowShopBuffers_startDABCWithParameters', PACKAGE = 'TwoMachineFlowShopBuffers', jobData, logFileName, maxBufferSize, bufferType, targetCriterion, runNumber, fileSuffix, populationSize, perturbationStrength, destructionSize1, destructionSize2, numberOfInserts, localSearchAttempts))
+}
+
+#' @export
 startHVNS <- function(jobData, logFileName, maxBufferSize, bufferType = "intermediateBuffer", targetCriterion = "makespan", runNumber = 1L, fileSuffix = "") {
     invisible(.Call('_TwoMachineFlowShopBuffers_startHVNS', PACKAGE = 'TwoMachineFlowShopBuffers', jobData, logFileName, maxBufferSize, bufferType, targetCriterion, runNumber, fileSuffix))
 }
 
 #' @export
+startHVNSWithParams <- function(jobData, logFileName, maxBufferSize, bufferType = "intermediateBuffer", targetCriterion = "makespan", runNumber = 1L, fileSuffix = "", nIter = 180000L, endTemperatureFactor = 0.1) {
+    invisible(.Call('_TwoMachineFlowShopBuffers_startHVNSWithParams', PACKAGE = 'TwoMachineFlowShopBuffers', jobData, logFileName, maxBufferSize, bufferType, targetCriterion, runNumber, fileSuffix, nIter, endTemperatureFactor))
+}
+
+#' @export
 startILS <- function(jobData, logFileName, maxBufferSize, bufferType = "intermediateBuffer", targetCriterion = "makespan", runNumber = 1L, fileSuffix = "", lookAround = 0L, p = 0.9, operationSequence = "213", numberOfAnts = 10L, tauInit = 1, evaporation = 0.3, delta = 0.5, withACO = FALSE, withLS = TRUE, withReconstruct = TRUE, useRandomPermutationForLS = FALSE, useRandomPermutationForReconstruct = FALSE, withInitialReconstruct = FALSE, withNEH = TRUE) {
     invisible(.Call('_TwoMachineFlowShopBuffers_startILS', PACKAGE = 'TwoMachineFlowShopBuffers', jobData, logFileName, maxBufferSize, bufferType, targetCriterion, runNumber, fileSuffix, lookAround, p, operationSequence, numberOfAnts, tauInit, evaporation, delta, withACO, withLS, withReconstruct, useRandomPermutationForLS, useRandomPermutationForReconstruct, withInitialReconstruct, withNEH))
-}
-
-#' @export
-simulateBufferUsage <- function(jobDataDF, permutationM1, permutationM2, maxBufferSize, abortOnInvalidity = TRUE) {
-    .Call('_TwoMachineFlowShopBuffers_simulateBufferUsage', PACKAGE = 'TwoMachineFlowShopBuffers', jobDataDF, permutationM1, permutationM2, maxBufferSize, abortOnInvalidity)
-}
-
-#' @export
-simulateBufferUsageTotalBuffer <- function(jobDataDF, permutationM1, permutationM2, maxBufferSize, abortOnInvalidity = TRUE) {
-    .Call('_TwoMachineFlowShopBuffers_simulateBufferUsageTotalBuffer', PACKAGE = 'TwoMachineFlowShopBuffers', jobDataDF, permutationM1, permutationM2, maxBufferSize, abortOnInvalidity)
 }
 
 #' @export
@@ -59,6 +59,16 @@ simulateFlowShopC_DueTime <- function(jobDataDF, permutationM1, permutationM2, m
 #' @export
 simulateFlowShopTotalBufferC_DueTime <- function(jobDataDF, permutationM1, permutationM2, maxBufferSize, abortOnInvalidity = TRUE) {
     .Call('_TwoMachineFlowShopBuffers_simulateFlowShopTotalBufferC_DueTime', PACKAGE = 'TwoMachineFlowShopBuffers', jobDataDF, permutationM1, permutationM2, maxBufferSize, abortOnInvalidity)
+}
+
+#' @export
+simulateBufferUsage <- function(jobDataDF, permutationM1, permutationM2, maxBufferSize, abortOnInvalidity = TRUE) {
+    .Call('_TwoMachineFlowShopBuffers_simulateBufferUsage', PACKAGE = 'TwoMachineFlowShopBuffers', jobDataDF, permutationM1, permutationM2, maxBufferSize, abortOnInvalidity)
+}
+
+#' @export
+simulateBufferUsageTotalBuffer <- function(jobDataDF, permutationM1, permutationM2, maxBufferSize, abortOnInvalidity = TRUE) {
+    .Call('_TwoMachineFlowShopBuffers_simulateBufferUsageTotalBuffer', PACKAGE = 'TwoMachineFlowShopBuffers', jobDataDF, permutationM1, permutationM2, maxBufferSize, abortOnInvalidity)
 }
 
 #' @export

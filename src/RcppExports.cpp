@@ -47,6 +47,28 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
+// startDABCWithParameters
+void startDABCWithParameters(Rcpp::DataFrame jobData, std::string logFileName, int maxBufferSize, std::string bufferType, std::string targetCriterion, unsigned int runNumber, std::string fileSuffix, int populationSize, int perturbationStrength, int destructionSize1, int destructionSize2, int numberOfInserts, int localSearchAttempts);
+RcppExport SEXP _TwoMachineFlowShopBuffers_startDABCWithParameters(SEXP jobDataSEXP, SEXP logFileNameSEXP, SEXP maxBufferSizeSEXP, SEXP bufferTypeSEXP, SEXP targetCriterionSEXP, SEXP runNumberSEXP, SEXP fileSuffixSEXP, SEXP populationSizeSEXP, SEXP perturbationStrengthSEXP, SEXP destructionSize1SEXP, SEXP destructionSize2SEXP, SEXP numberOfInsertsSEXP, SEXP localSearchAttemptsSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::DataFrame >::type jobData(jobDataSEXP);
+    Rcpp::traits::input_parameter< std::string >::type logFileName(logFileNameSEXP);
+    Rcpp::traits::input_parameter< int >::type maxBufferSize(maxBufferSizeSEXP);
+    Rcpp::traits::input_parameter< std::string >::type bufferType(bufferTypeSEXP);
+    Rcpp::traits::input_parameter< std::string >::type targetCriterion(targetCriterionSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type runNumber(runNumberSEXP);
+    Rcpp::traits::input_parameter< std::string >::type fileSuffix(fileSuffixSEXP);
+    Rcpp::traits::input_parameter< int >::type populationSize(populationSizeSEXP);
+    Rcpp::traits::input_parameter< int >::type perturbationStrength(perturbationStrengthSEXP);
+    Rcpp::traits::input_parameter< int >::type destructionSize1(destructionSize1SEXP);
+    Rcpp::traits::input_parameter< int >::type destructionSize2(destructionSize2SEXP);
+    Rcpp::traits::input_parameter< int >::type numberOfInserts(numberOfInsertsSEXP);
+    Rcpp::traits::input_parameter< int >::type localSearchAttempts(localSearchAttemptsSEXP);
+    startDABCWithParameters(jobData, logFileName, maxBufferSize, bufferType, targetCriterion, runNumber, fileSuffix, populationSize, perturbationStrength, destructionSize1, destructionSize2, numberOfInserts, localSearchAttempts);
+    return R_NilValue;
+END_RCPP
+}
 // startHVNS
 void startHVNS(Rcpp::DataFrame jobData, std::string logFileName, int maxBufferSize, std::string bufferType, std::string targetCriterion, unsigned int runNumber, std::string fileSuffix);
 RcppExport SEXP _TwoMachineFlowShopBuffers_startHVNS(SEXP jobDataSEXP, SEXP logFileNameSEXP, SEXP maxBufferSizeSEXP, SEXP bufferTypeSEXP, SEXP targetCriterionSEXP, SEXP runNumberSEXP, SEXP fileSuffixSEXP) {
@@ -60,6 +82,24 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< unsigned int >::type runNumber(runNumberSEXP);
     Rcpp::traits::input_parameter< std::string >::type fileSuffix(fileSuffixSEXP);
     startHVNS(jobData, logFileName, maxBufferSize, bufferType, targetCriterion, runNumber, fileSuffix);
+    return R_NilValue;
+END_RCPP
+}
+// startHVNSWithParams
+void startHVNSWithParams(Rcpp::DataFrame jobData, std::string logFileName, int maxBufferSize, std::string bufferType, std::string targetCriterion, unsigned int runNumber, std::string fileSuffix, int nIter, double endTemperatureFactor);
+RcppExport SEXP _TwoMachineFlowShopBuffers_startHVNSWithParams(SEXP jobDataSEXP, SEXP logFileNameSEXP, SEXP maxBufferSizeSEXP, SEXP bufferTypeSEXP, SEXP targetCriterionSEXP, SEXP runNumberSEXP, SEXP fileSuffixSEXP, SEXP nIterSEXP, SEXP endTemperatureFactorSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::DataFrame >::type jobData(jobDataSEXP);
+    Rcpp::traits::input_parameter< std::string >::type logFileName(logFileNameSEXP);
+    Rcpp::traits::input_parameter< int >::type maxBufferSize(maxBufferSizeSEXP);
+    Rcpp::traits::input_parameter< std::string >::type bufferType(bufferTypeSEXP);
+    Rcpp::traits::input_parameter< std::string >::type targetCriterion(targetCriterionSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type runNumber(runNumberSEXP);
+    Rcpp::traits::input_parameter< std::string >::type fileSuffix(fileSuffixSEXP);
+    Rcpp::traits::input_parameter< int >::type nIter(nIterSEXP);
+    Rcpp::traits::input_parameter< double >::type endTemperatureFactor(endTemperatureFactorSEXP);
+    startHVNSWithParams(jobData, logFileName, maxBufferSize, bufferType, targetCriterion, runNumber, fileSuffix, nIter, endTemperatureFactor);
     return R_NilValue;
 END_RCPP
 }
@@ -91,36 +131,6 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< bool >::type withNEH(withNEHSEXP);
     startILS(jobData, logFileName, maxBufferSize, bufferType, targetCriterion, runNumber, fileSuffix, lookAround, p, operationSequence, numberOfAnts, tauInit, evaporation, delta, withACO, withLS, withReconstruct, useRandomPermutationForLS, useRandomPermutationForReconstruct, withInitialReconstruct, withNEH);
     return R_NilValue;
-END_RCPP
-}
-// simulateBufferUsage
-int simulateBufferUsage(Rcpp::DataFrame jobDataDF, std::vector<std::string> permutationM1, std::vector<std::string> permutationM2, int maxBufferSize, bool abortOnInvalidity);
-RcppExport SEXP _TwoMachineFlowShopBuffers_simulateBufferUsage(SEXP jobDataDFSEXP, SEXP permutationM1SEXP, SEXP permutationM2SEXP, SEXP maxBufferSizeSEXP, SEXP abortOnInvaliditySEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< Rcpp::DataFrame >::type jobDataDF(jobDataDFSEXP);
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type permutationM1(permutationM1SEXP);
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type permutationM2(permutationM2SEXP);
-    Rcpp::traits::input_parameter< int >::type maxBufferSize(maxBufferSizeSEXP);
-    Rcpp::traits::input_parameter< bool >::type abortOnInvalidity(abortOnInvaliditySEXP);
-    rcpp_result_gen = Rcpp::wrap(simulateBufferUsage(jobDataDF, permutationM1, permutationM2, maxBufferSize, abortOnInvalidity));
-    return rcpp_result_gen;
-END_RCPP
-}
-// simulateBufferUsageTotalBuffer
-int simulateBufferUsageTotalBuffer(Rcpp::DataFrame jobDataDF, std::vector<std::string> permutationM1, std::vector<std::string> permutationM2, int maxBufferSize, bool abortOnInvalidity);
-RcppExport SEXP _TwoMachineFlowShopBuffers_simulateBufferUsageTotalBuffer(SEXP jobDataDFSEXP, SEXP permutationM1SEXP, SEXP permutationM2SEXP, SEXP maxBufferSizeSEXP, SEXP abortOnInvaliditySEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< Rcpp::DataFrame >::type jobDataDF(jobDataDFSEXP);
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type permutationM1(permutationM1SEXP);
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type permutationM2(permutationM2SEXP);
-    Rcpp::traits::input_parameter< int >::type maxBufferSize(maxBufferSizeSEXP);
-    Rcpp::traits::input_parameter< bool >::type abortOnInvalidity(abortOnInvaliditySEXP);
-    rcpp_result_gen = Rcpp::wrap(simulateBufferUsageTotalBuffer(jobDataDF, permutationM1, permutationM2, maxBufferSize, abortOnInvalidity));
-    return rcpp_result_gen;
 END_RCPP
 }
 // simulateFlowShopC
@@ -213,6 +223,36 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// simulateBufferUsage
+int simulateBufferUsage(Rcpp::DataFrame jobDataDF, std::vector<std::string> permutationM1, std::vector<std::string> permutationM2, int maxBufferSize, bool abortOnInvalidity);
+RcppExport SEXP _TwoMachineFlowShopBuffers_simulateBufferUsage(SEXP jobDataDFSEXP, SEXP permutationM1SEXP, SEXP permutationM2SEXP, SEXP maxBufferSizeSEXP, SEXP abortOnInvaliditySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::DataFrame >::type jobDataDF(jobDataDFSEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type permutationM1(permutationM1SEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type permutationM2(permutationM2SEXP);
+    Rcpp::traits::input_parameter< int >::type maxBufferSize(maxBufferSizeSEXP);
+    Rcpp::traits::input_parameter< bool >::type abortOnInvalidity(abortOnInvaliditySEXP);
+    rcpp_result_gen = Rcpp::wrap(simulateBufferUsage(jobDataDF, permutationM1, permutationM2, maxBufferSize, abortOnInvalidity));
+    return rcpp_result_gen;
+END_RCPP
+}
+// simulateBufferUsageTotalBuffer
+int simulateBufferUsageTotalBuffer(Rcpp::DataFrame jobDataDF, std::vector<std::string> permutationM1, std::vector<std::string> permutationM2, int maxBufferSize, bool abortOnInvalidity);
+RcppExport SEXP _TwoMachineFlowShopBuffers_simulateBufferUsageTotalBuffer(SEXP jobDataDFSEXP, SEXP permutationM1SEXP, SEXP permutationM2SEXP, SEXP maxBufferSizeSEXP, SEXP abortOnInvaliditySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::DataFrame >::type jobDataDF(jobDataDFSEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type permutationM1(permutationM1SEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type permutationM2(permutationM2SEXP);
+    Rcpp::traits::input_parameter< int >::type maxBufferSize(maxBufferSizeSEXP);
+    Rcpp::traits::input_parameter< bool >::type abortOnInvalidity(abortOnInvaliditySEXP);
+    rcpp_result_gen = Rcpp::wrap(simulateBufferUsageTotalBuffer(jobDataDF, permutationM1, permutationM2, maxBufferSize, abortOnInvalidity));
+    return rcpp_result_gen;
+END_RCPP
+}
 // simulateSpecial
 int simulateSpecial(Rcpp::DataFrame jobDataDF, std::vector<std::string> permutationM1, int maxBufferSize, bool abortOnInvalidity, bool getMakespan);
 RcppExport SEXP _TwoMachineFlowShopBuffers_simulateSpecial(SEXP jobDataDFSEXP, SEXP permutationM1SEXP, SEXP maxBufferSizeSEXP, SEXP abortOnInvaliditySEXP, SEXP getMakespanSEXP) {
@@ -275,16 +315,18 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_TwoMachineFlowShopBuffers_startACOLS", (DL_FUNC) &_TwoMachineFlowShopBuffers_startACOLS, 17},
     {"_TwoMachineFlowShopBuffers_startDABC", (DL_FUNC) &_TwoMachineFlowShopBuffers_startDABC, 7},
+    {"_TwoMachineFlowShopBuffers_startDABCWithParameters", (DL_FUNC) &_TwoMachineFlowShopBuffers_startDABCWithParameters, 13},
     {"_TwoMachineFlowShopBuffers_startHVNS", (DL_FUNC) &_TwoMachineFlowShopBuffers_startHVNS, 7},
+    {"_TwoMachineFlowShopBuffers_startHVNSWithParams", (DL_FUNC) &_TwoMachineFlowShopBuffers_startHVNSWithParams, 9},
     {"_TwoMachineFlowShopBuffers_startILS", (DL_FUNC) &_TwoMachineFlowShopBuffers_startILS, 21},
-    {"_TwoMachineFlowShopBuffers_simulateBufferUsage", (DL_FUNC) &_TwoMachineFlowShopBuffers_simulateBufferUsage, 5},
-    {"_TwoMachineFlowShopBuffers_simulateBufferUsageTotalBuffer", (DL_FUNC) &_TwoMachineFlowShopBuffers_simulateBufferUsageTotalBuffer, 5},
     {"_TwoMachineFlowShopBuffers_simulateFlowShopC", (DL_FUNC) &_TwoMachineFlowShopBuffers_simulateFlowShopC, 5},
     {"_TwoMachineFlowShopBuffers_simulateFlowShopTotalBufferC", (DL_FUNC) &_TwoMachineFlowShopBuffers_simulateFlowShopTotalBufferC, 5},
     {"_TwoMachineFlowShopBuffers_simulateFlowShopC_TFT", (DL_FUNC) &_TwoMachineFlowShopBuffers_simulateFlowShopC_TFT, 5},
     {"_TwoMachineFlowShopBuffers_simulateFlowShopTotalBufferC_TFT", (DL_FUNC) &_TwoMachineFlowShopBuffers_simulateFlowShopTotalBufferC_TFT, 5},
     {"_TwoMachineFlowShopBuffers_simulateFlowShopC_DueTime", (DL_FUNC) &_TwoMachineFlowShopBuffers_simulateFlowShopC_DueTime, 5},
     {"_TwoMachineFlowShopBuffers_simulateFlowShopTotalBufferC_DueTime", (DL_FUNC) &_TwoMachineFlowShopBuffers_simulateFlowShopTotalBufferC_DueTime, 5},
+    {"_TwoMachineFlowShopBuffers_simulateBufferUsage", (DL_FUNC) &_TwoMachineFlowShopBuffers_simulateBufferUsage, 5},
+    {"_TwoMachineFlowShopBuffers_simulateBufferUsageTotalBuffer", (DL_FUNC) &_TwoMachineFlowShopBuffers_simulateBufferUsageTotalBuffer, 5},
     {"_TwoMachineFlowShopBuffers_simulateSpecial", (DL_FUNC) &_TwoMachineFlowShopBuffers_simulateSpecial, 5},
     {"_TwoMachineFlowShopBuffers_simulateSpecialTotalBuffer", (DL_FUNC) &_TwoMachineFlowShopBuffers_simulateSpecialTotalBuffer, 5},
     {"_TwoMachineFlowShopBuffers_simulateSpecialIdleTime", (DL_FUNC) &_TwoMachineFlowShopBuffers_simulateSpecialIdleTime, 4},
