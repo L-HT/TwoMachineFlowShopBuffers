@@ -11,7 +11,12 @@ Make sure you already have the `devtools` package installed in R. Then you only 
 devtools::install_github("L-HT/TwoMachineFlowShopBuffers")
 ```
 to install this package.
+The command
+```
+library(TwoMachineFlowShopBuffers)
+```
+loads the package into the R environment.
 
 An example on how to call some basic functions can be found in `example.R` located in the subdirectory `tests`.
 
-The zip files contain the scripts used to perform the experiment and subsequent evaluation.
+The zip files contain the scripts used to perform the experiments and subsequent evaluation.

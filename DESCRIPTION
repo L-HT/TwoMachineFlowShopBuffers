@@ -4,14 +4,13 @@ Title: Algorithms for Optimizing Two-Machine Flow Shops with Buffers
 Version: 0.9.0
 Author: Hoang Thanh Le
 Maintainer: Hoang Thanh Le <lht@informatik.uni-leipzig.de>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: This package provides some metaheuristic algorithms for optimizing two-machine flow shops with buffers.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 Imports: Rcpp (>= 0.12.9), R6
 LinkingTo: Rcpp
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 Suggests: testthat
 URL: https://github.com/L-HT/TwoMachineFlowShopBuffers
 BugReports: https://github.com/L-HT/TwoMachineFlowShopBuffers/issues
