@@ -1,4 +1,18 @@
+Abbreviations for the algorithms:
+---------------------------------
+
+HVNS: Hybrid Variable Neighborhood Search
+HVNS-tuned: HVNS with irace-tuned parameters
+DABC: Discrete Artificial Bee Colony
+DABC-tuned: DABC with irace-tuned parameters
+ACOLS-LOWEVA: refers to the Ant Colony Optimization (ACO) used in the
+experiments
+ILS-NEH: Iterated Local Search with modified NEH heuristic. Also 
+abbreviated as 2BF-ILS.
+
+
 Description of the files that can be found here:
+------------------------------------------------
 
 avgRPDPerSize.csv: 
 Contains the average ratio (RPD(2BF-ILS) / RPD(algorithm)) for each of 
