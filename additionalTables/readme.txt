@@ -1,4 +1,8 @@
 Abbreviations for the algorithms:
+<<<<<<< HEAD
+=======
+---------------------------------
+>>>>>>> e74b4b78986d3d7cce320e2ca09861f8bdaf69ed
 
 HVNS: Hybrid Variable Neighborhood Search
 HVNS-tuned: HVNS with irace-tuned parameters
@@ -9,7 +13,13 @@ experiments
 ILS-NEH: Iterated Local Search with modified NEH heuristic. Also 
 abbreviated as 2BF-ILS.
 
+<<<<<<< HEAD
 Description of the files that can be found here:
+=======
+
+Description of the files that can be found here:
+------------------------------------------------
+>>>>>>> e74b4b78986d3d7cce320e2ca09861f8bdaf69ed
 
 avgRPDPerSize.csv: 
 Contains the average ratio (RPD(2BF-ILS) / RPD(algorithm)) for each of 
@@ -80,5 +90,8 @@ to the algorithm in the respective column). Only results with two
 arrows (<< / >>) are statistically significant. Results with one arrow
 (< / >) are cases where the p-value is under 0.05, but not 
 statistically significant due to Bonferroni correction.
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> e74b4b78986d3d7cce320e2ca09861f8bdaf69ed
