@@ -82,8 +82,4 @@ to the algorithm in the respective column). Only results with two
 arrows (<< / >>) are statistically significant. Results with one arrow
 (< / >) are cases where the p-value is under 0.05, but not 
 statistically significant due to Bonferroni correction.
-<<<<<<< HEAD
 
-
-=======
->>>>>>> e74b4b78986d3d7cce320e2ca09861f8bdaf69ed
