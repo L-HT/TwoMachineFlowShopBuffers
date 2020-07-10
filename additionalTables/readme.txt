@@ -1,3 +1,7 @@
+Here additional data is provided from the experiments where several 
+metaheuristics were compared for two-machine flow shops with buffer
+constraint where one of the machines has constant processing times.
+
 Abbreviations for the algorithms:
 ---------------------------------
 HVNS: Hybrid Variable Neighborhood Search
